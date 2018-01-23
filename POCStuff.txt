@@ -1,0 +1,39 @@
+
+String response1 = null;
+Gson gson = new GsonBuilder().disableHtmlEscaping().create();	
+			response1= gson.toJson(date1);
+
+
+
+
+
+success : function(response)
+		
+		
+		{
+			//alert("hi");
+			var html = "";
+			
+
+			var actObj = JSON.parse(response);
+			
+			 var htmlContents = "<option>--select--</option>";
+			 $('#taskname').html(htmlContents);
+				for ( var i = 0; i < actObj.length; i++) {
+					var obj = actObj[i];
+					htmlContents = htmlContents + '<option>' + obj + '</option>';
+				
+				//	console.log(obj);
+					  $('#taskname').html(htmlContents);
+					
+			 
+					}
+		
+			
+		},
+		error : function(e) {
+
+			alert('Error ! ' + 'Unable to get values' + e);
+			return;
+		}
+	});
